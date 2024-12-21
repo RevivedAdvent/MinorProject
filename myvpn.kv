@@ -1,0 +1,181 @@
+#:import Login screens.login
+#:import Register screens.register
+#:import Home screens.home
+
+ManageWindows:
+    Login:
+    Register:
+    Home:
+
+<Login>:
+    FloatLayout:
+        Image:
+            source: "assets/images/Login_BG.png"
+            fit_mode: "cover"
+
+        Label:
+            text: "Welcome to Origen VPN"
+            font_name: "assets/fonts/Heading.ttf"
+            font_size: "40sp"
+            size_hint: (0.8, 0.1)
+            pos_hint: {"center_x": 0.65, "y": 0.75}
+            color: (0.886, 0.447, 0.357, 1)
+
+        TextInput:
+            id: username
+            font_size: "20sp"
+            font_name: "assets/fonts/Regular_text.ttf"
+            background_color: (0, 0, 0, 0.2)
+            foreground_color: (0.580, 0.690, 0.855, 1)
+            hint_text: "Enter your username"
+            size_hint: (0.4, 0.1)
+            pos_hint: {"center_x": 0.65, "y": 0.6}
+            multiline: False
+
+        TextInput:
+            id: password
+            font_name: "assets/fonts/Regular_text.ttf"
+            font_size: "20sp"
+            background_color: (0, 0, 0, 0.2)
+            foreground_color: (0.580, 0.690, 0.855, 1)
+            hint_text: "Enter your password"
+            password: True
+            size_hint: (0.4, 0.1)
+            pos_hint: {"center_x": 0.65, "y": 0.475}
+            multiline: False
+
+        Button:
+            text: "Login"
+            font_name: "assets/fonts/Buttons.otf"
+            font_size: "25sp"
+            background_color: (0, 0, 0, 0.2)
+            color: (0.886, 0.447, 0.357, 1)
+            size_hint: (0.2, 0.1)
+            pos_hint: {"center_x": 0.65, "y": 0.3}
+            on_release: root.login(username.text, password.text)
+
+        Button:
+            text: "Register"
+            font_size: "25sp"
+            font_name: "assets/fonts/Buttons.otf"
+            background_color: (0, 0, 0, 0.2)
+            color: (0.886, 0.447, 0.357, 1)
+            size_hint: (0.2, 0.1)
+            pos_hint: {"center_x": 0.65, "y": 0.15}
+            on_release: root.manager.current = 'register'
+        
+        Label:
+            text: "Don't have an Account? Please Register Above"
+            font_name: "assets/fonts/Regular_text.ttf"
+            font_size: "20sp"
+            background_color: (0, 0, 0, 1)
+            color: (0.886, 0.447, 0.357, 1)
+            size_hint: (0.2, 0.1)
+            pos_hint: {"center_x": 0.65, "y": 0.05}
+
+<Register>:
+    FloatLayout:
+        Image:
+            source: "assets/images/Login_BG.png"
+            fit_mode: "cover"
+
+        Label:
+            text: "Register"
+            font_name: "assets/fonts/Heading.ttf"
+            font_size: "40sp"
+            size_hint: (0.8, 0.1)
+            pos_hint: {"center_x": 0.65, "y": 0.75}
+            color: (0.886, 0.447, 0.357, 1)
+
+        TextInput:
+            id: reg_username
+            font_name: "assets/fonts/Regular_text.ttf"
+            font_size: "20sp"
+            background_color: (0, 0, 0, 0.2)
+            foreground_color: (0.580, 0.690, 0.855, 1)
+            hint_text: "Create a username"
+            size_hint: (0.4, 0.1)
+            pos_hint: {"center_x": 0.65, "y": 0.6}
+            multiline: False
+
+        TextInput:
+            id: reg_password
+            font_name: "assets/fonts/Regular_text.ttf"
+            font_size: "20sp"
+            background_color: (0, 0, 0, 0.2)
+            foreground_color: (0.580, 0.690, 0.855, 1)
+            hint_text: "Create a password"
+            password: True
+            size_hint: (0.4, 0.1)
+            pos_hint: {"center_x": 0.65, "y": 0.475}
+            multiline: False
+
+        Button:
+            text: "Register"
+            font_name: "assets/fonts/Buttons.otf"
+            font_size: "25sp"
+            background_color: (0, 0, 0, 0.2)
+            color: (0.886, 0.447, 0.357, 1)
+            size_hint: (0.2, 0.1)
+            pos_hint: {"center_x": 0.65, "y": 0.3}
+            on_release: root.register(reg_username.text, reg_password.text)  # Call the `register` method in Register class
+
+        Button:
+            text: "Back to Login"
+            font_name: "assets/fonts/Buttons.otf"
+            font_size: "25sp"
+            background_color: (0, 0, 0, 0.2)
+            color: (0.886, 0.447, 0.357, 1)
+            size_hint: (0.2, 0.1)
+            pos_hint: {"center_x": 0.65, "y": 0.15}
+            on_release: root.manager.current = 'login'
+        
+        Label:
+            text: "Already have an account? Go back to login"
+            font_name: "assets/fonts/Regular_text.ttf"
+            font_size: "20sp"
+            background_color: (0, 0, 0, 1)
+            color: (0.886, 0.447, 0.357, 1)
+            size_hint: (0.2, 0.1)
+            pos_hint: {"center_x": 0.65, "y": 0.05}
+
+
+<Home>:
+    FloatLayout:
+        Image:
+            source: "assets/images/Main_2.jpg"
+            fit_mode: "cover"
+
+        Label:
+            text: root.status_text
+            font_name: "assets/fonts/Heading.ttf"
+            font_size: "40sp"
+            size_hint: (0.8, 0.1)
+            pos_hint: {"center_x": 0.5, "y": 0.8}
+            color: (0.886, 0.447, 0.357, 1)
+
+        Button:
+            text: "Connect to VPN"
+            background_normal: ''
+            background_color: (0, 1, 0, 0.4)
+            color: (0, 0, 0, 1)
+            size_hint: (0.2, 0.15)
+            pos_hint: {"center_x": 0.2, "y": 0.4}
+            on_release: root.connect_to_vpn()
+
+        Button:
+            text: "Disconnect VPN"
+            background_normal: ''
+            background_color: (1, 0, 0, 0.4)
+            color: (0, 0, 0, 1)
+            size_hint: (0.2, 0.15)
+            pos_hint: {"center_x": 0.8, "y": 0.4}
+            on_release: root.disconnect_vpn()
+
+        Button:
+            text: "Logout"
+            background_color: (0, 0, 0, 0.5)
+            color: (0, 0, 0, 1)
+            size_hint: (0.2, 0.10)
+            pos_hint: {"center_x": 0.5, "y": 0.10}
+            on_release: root.attempt_logout()
